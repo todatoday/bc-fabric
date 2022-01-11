@@ -1,0 +1,230 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <h1 class="my-5">Tableau de bord</h1>
+
+    <div class="row">
+        <div class="col">
+             <div class="card bg-primary text-white mb-3 text-center">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <i class="fas fa-users fa-3x"></i>
+                        </div>
+                        <div class="col-8">
+                            <h4 class="card-title">{{ stats.users }} utilisateurs</h4>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+        <div class="col">
+            <div class="card text-white bg-dark mb-3 text-center">
+                <div class="card-body">
+                    <div class="row">
+                       <div class="col-4">
+                            <i class="fas fa-gem fa-3x"></i>
+                       </div>
+                       <div class="col-8">
+                        <h4 class="card-title">{{ stats.bijouxs}} bijoux</h4>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-white bg-info mb-3 text-center">
+                   <div class="card-body">
+                    <div class="row">
+                       <div class="col-4">
+                        <i class="fas fa-cut fa-3x"></i>
+                       </div>
+                       <div class="col-8">
+                        <h4 class="card-title">{{ stats.coutures }}couture</h4>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-white bg-success mb-3 text-center">
+                   <div class="card-body">
+                    <div class="row">
+                       <div class="col-4">
+                           <i class="fas fa-comments fa-3x"></i>
+                       </div>
+                       <div class="col-8">
+                            <h4 class="card-title">{{ stats.commentBs }}avis</h4>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-white bg-info mb-3 text-center">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <i class="fas fa-comments fa-3x"></i>
+                        </div>
+                        <div class="col-8">
+                            <h4 class="card-title">{{ stats.commentCs }}avis</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    {# Bijoux #}
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-success">
+                <h2 class="alert-heading my-3">
+                    <i class="fas fa-arrow-up"></i>
+                    Les Bijouxs populaires
+                </h2>
+
+                <table class="table table-hover text-white">
+                    <thead>
+                        <tr>
+                            <th>Bijoux</th>
+                            <th>Createur</th>
+                            <th>Moyenne</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for bijoux in bestBijouxs %}
+                        <tr>
+                            <td>{{bijoux.title}}</td>
+                            <td>
+                                <img src="{{bijoux.picture}}" alt="" class="avatat avatar-micro  rounded">
+                                {{bijoux.firstName}} {{bijoux.lastName}}
+                            </td>
+                            <td class="text-center">
+                                <span class="badge bg-dark">
+                                    {{bijoux.note | number_format(1, ', ', ' ')}}
+                                </span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <div class="alert alert-danger">
+                <h2 class="alert-heading my-3">
+                    <i class="fas fa-arrow-down"></i>
+                    Les pire Bijouxs
+                </h2>
+
+                <table class="table table-hover text-white">
+                    <thead>
+                        <tr>
+                            <th>Bijoux</th>
+                            <th>Createur</th>
+                            <th>Moyenne</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for bijoux in worstBijouxs %}
+                        <tr>
+                            <td>{{bijoux.title}}</td>
+                            <td>
+                                <img src="{{bijoux.picture}}" alt="" class="avatat avatar-micro  rounded">
+                                {{bijoux.firstName}} {{bijoux.lastName}}
+                            </td>
+                            <td class="text-center">
+                                <span class="badge bg-dark">
+                                    {{bijoux.note | number_format(1, ', ', ' ')}}
+                                </span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    {# Couture #}
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-dark">
+                <h2 class="alert-heading my-3">
+                    <i class="fas fa-arrow-up"></i>
+                    Les Couture populaires
+                </h2>
+
+                <table class="table table-hover text-white">
+                    <thead>
+                        <tr>
+                            <th>Couture</th>
+                            <th>Createur</th>
+                            <th>Moyenne</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for couture in bestCoutures %}
+                        <tr>
+                            <td>{{couture.title}}</td>
+                            <td>
+                                <img src="{{couture.picture}}" alt="" class="avatat avatar-micro rounded">
+                                {{couture.firstName}} {{couture.lastName}}
+                            </td>
+                            <td class="text-center">
+                                <span class="badge bg-dark">
+                                    {{couture.note | number_format(1, ', ', ' ')}}
+                                </span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <div class="alert alert-danger">
+                <h2 class="alert-heading my-3">
+                    <i class="fas fa-arrow-down"></i>
+                    Les pire produits Couture
+                </h2>
+
+                <table class="table table-hover text-white">
+                    <thead>
+                        <tr>
+                            <th>Couture</th>
+                            <th>Createur</th>
+                            <th>Moyenne</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for couture in worstCoutures %}
+                        <tr>
+                            <td>{{couture.title}}</td>
+                            <td>
+                                <img src="{{couture.picture}}" alt="" class="avatat avatar-micro rounded">
+                                {{couture.firstName}} {{couture.lastName}}
+                            </td>
+                            <td class="text-center">
+                                <span class="badge bg-dark">
+                                    {{couture.note | number_format(1, ', ', ' ')}}
+                                </span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

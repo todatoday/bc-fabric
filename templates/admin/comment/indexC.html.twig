@@ -1,0 +1,51 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration des commentaires couture!{% endblock %}
+
+{% block body %}
+<div class="container-fluid">   
+    <h4 class="my-5">Administration des commentaires couture!</h4>
+        <table class="table table-hover align-items-center">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Date</th>
+                    <th>Auteur</th>
+                    <th>Commentaire</th>
+                    <th>Note</th>
+                    <th>Couture</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for commentC in pagination.data %}
+                <tr>
+                    <td>{{commentC.id}}</td>
+                    <td>{{commentC.createdAt|date('d/m/Y H:i')}}</td>
+                    <td><img src="{{commentC.author.picture}}" alt="" class="avatar avatar-micro">{{commentC.author.fullName}}</td>
+                    <td>{{commentC.content}}</td>
+                    <td>
+                        <span class="badge bg-dark">
+                            {{commentC.rating}}
+                        </span>
+                    </td>
+                    <td>{{commentC.couture.title}}</td>
+                      <td>
+                    <a href="{{ path('admin_commentC_edit', {'id': commentC.id}) }}" class="btn btn-primary">
+                        <i class="fas fa-pen"></i>
+                    </a>
+
+                    <a href="{{ path('admin_commentC_delete', {'id': commentC.id}) }}" class="btn btn-danger">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {{pagination.display()}}
+        
+        {# {% include "admin/partials/pagination.html.twig" with {'route': 'admin_commentC_index'} %} #}
+</div>
+{% endblock %}

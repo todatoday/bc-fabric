@@ -1,0 +1,67 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Création d'un produit Bijoux
+{% endblock %}
+
+{% form_theme form 'bijoux/_collection.html.twig' %}
+
+
+{% block body %}
+
+	<div class="container">
+		<h1 class="my-5">Créer un nouveaux Bijoux</h1>
+
+		{{ form_start(form) }}
+		
+		<div class="row">
+			<div class="col-md-4">
+				<div class="alert alert-light">
+					<h2>Informations générales</h2>
+					<hr>
+					{{ form_row(form.title) }}
+					{{ form_row(form.slug) }}
+				</div>
+
+				<div class="alert alert-light">
+					<h2>Détails d'produit</h2>
+					<hr>
+					{{ form_row(form.introduction) }}
+					{{ form_row(form.content) }}
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="alert alert-light">
+					<h2>Images de produit</h2>
+					<hr>
+					{{ form_row(form.coverImage) }}
+					{{ form_row(form.imageBijouxs) }}
+				</div>
+			</div>
+		</div>
+
+		{# {{ form_widget(form) }} #}
+
+		<div class="alert alert-info clearfix">
+	
+			<h2 class="alert-heading">
+				<i class="fas fa-save"></i>
+				Sauvgarder le produit
+			</h2>
+
+			
+			<p>Vous étes sur le point de créer votre produit... !</p>
+			<button type="submit" class="btn btn-primary float-right">
+				<i class="fas fa-check"></i>
+				Créer un nouveaux Bijoux</button>
+		</div>
+
+		{{ form_end(form) }}
+	</div>
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+	<script src="/js/bijoux.js"></script>
+{% endblock %}

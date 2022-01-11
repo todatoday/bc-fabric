@@ -1,0 +1,69 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration de produits Couture{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <h1>Gestion des produits</h1>
+
+    <table class="table table-hover">
+    
+        <thead>
+            <th>Id</th>
+            <th>Titre</th>
+            <th class="text-center">Auteur</th>
+            <th class="text-center">Note</th>
+            <th>Action</th>
+        </thead>
+
+        <tbody>
+          {% for couture in pagination.data %}  
+            <tr>
+                <td>{{couture.id}}</td>
+                <td>{{couture.title}}</td>
+                <td class="text-center">
+                    <img src="{{couture.author.picture}}" 
+                            alt="Avatar de {{couture.author.fullName}}" 
+                            class="avatar avatar-micro mr-2">
+                            {{couture.author.fullName}}
+                </td>
+                <td class="text-center">
+                    <span class="badge bg-primary rounded">
+                    {{couture.avgRatings | number_format(1, ',', ' ')}}</td>
+                    </span>
+                <td>
+                    <a href="{{ path('admin_coutures_edit', {'id': couture.id}) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                    <a href="{{ path('admin_coutures_delete', {'id': couture.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    
+    </table>
+
+    {{pagination.display()}}
+
+{# {% include "admin/partials/pagination.html.twig" with {'route': 'admin_coutures_index'} %} #}
+    
+    {# <div class="d-flex justify-content-center">
+      {% set page = pagination.page %}
+      {% set pages = pagination.pages %}
+        <ul class="pagination">
+            <li class="page-item {% if page == 1 %}disabled{% endif %}">
+                <a class="page-link" href="{{ path('admin_coutures_index', {'page': page - 1}) }}">&laquo;</a>
+            </li>
+            {% for i in 1..pages %}
+            <li class="page-item {% if page == i %}active{% endif %}">
+                <a class="page-link" href="{{ path('admin_coutures_index', {'page' : i }) }}">{{ i }}</a>
+            </li>
+            {% endfor %}
+            <li class="page-item {% if page == pages %}disabled{% endif %}">
+                <a class="page-link" href="{{ path('admin_coutures_index', {'page' : page + 1}) }}">&raquo;</a>
+            </li>
+        </ul>
+    </div> #}
+
+</div>
+{% endblock %}

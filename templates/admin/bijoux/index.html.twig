@@ -1,0 +1,77 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration de produits Bijoux{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1 class="my-5">Gestion des produits</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <th>Id</th>
+            <th>Titre</th>
+            <th class="text-center">Auteur</th>
+            <th class="text-center">Note</th>
+            <th>Action</th>
+        </thead>
+
+        <tbody>
+          {% for bijoux in pagination.data %}   
+          {# {% for bijoux in bijouxs %}   #}
+            <tr>
+                <td>{{bijoux.id}}</td>
+                <td>{{bijoux.title}}</td>
+                <td class="text-center">
+                    <img src="{{bijoux.author.picture}}" 
+                            alt="Avatar de {{bijoux.author.fullName}}" 
+                            class="avatar avata-micro mr-2">
+                            {{bijoux.author.fullName}}
+                </td>
+                <td class="text-center">
+                    <span class="badge bg-primary rounded">
+                    {{bijoux.avgRatings | number_format(1, ',', ' ')}}
+                    </span>
+                </td>
+                
+                <td>
+                    <a href="{{ path('admin_bijouxs_edit', {'id': bijoux.id}) }}" 
+                        class="btn btn-primary">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{{ path('admin_bijouxs_delete', {'id': bijoux.id}) }}" 
+                        class="btn btn-danger">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    
+    </table>
+
+    {{pagination.display()}}
+
+    {# {% include "admin/partials/pagination.html.twig" with {'route': 'admin_bijouxs_index'} %} #}
+
+
+        {# <div class="d-flex justify-content-center">
+            {% set page = pagination.page %}
+            {% set pages = pagination.pages %}
+            <ul class="pagination">
+                <li class="page-item {% if page == 1 %}disabled{% endif %}">
+                    <a class="page-link" href="{{ path('admin_bijouxs_index', {'page': page - 1}) }}">&laquo;</a>
+                </li>
+                {% for i in 1..pages %}
+                <li class="page-item {% if page == i %}active{% endif %}">
+                    <a class="page-link" href="{{ path('admin_bijouxs_index', {'page' : i }) }}">{{ i }}</a>
+                </li>
+                {% endfor %}
+                <li class="page-item {% if page == pages %}disabled{% endif %}">
+                    <a class="page-link" href="{{ path('admin_bijouxs_index', {'page' : page + 1}) }}">&raquo;</a>
+                </li>
+            </ul>
+        </div> #}
+
+</div>
+{% endblock %}

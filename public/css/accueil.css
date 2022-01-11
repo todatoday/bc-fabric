@@ -1,0 +1,419 @@
+*{
+    /* marge et padding 0 pour toutes les element  */
+    margin: 0;
+    padding: 0;
+    font-family: 'Cormorant Garamond', serif;
+    /* permet de changer le model de boite */
+    box-sizing: border-box;
+    
+}
+
+ul li a {
+    text-decoration: none;
+}
+
+body{
+       background-color:#E4E4E4 ; 
+       font-size: 1.4rem;
+}
+
+ 
+
+.image_nav{
+    background-image: url("../../images/woman-1149909_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 370px;
+    
+
+}
+.image_nav h3{
+  
+     
+    color: white;
+    font-size: 1.8rem;
+    width: 600px;
+    padding: 50px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* le contenu de site */
+.section_presentation{
+    font-size: 1.4rem;
+    margin: 100px 100px;
+
+}
+
+
+.section_presentation h1 {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+.section_images{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+    margin: 100px;
+    padding: 20px;
+}
+
+.bijou-section{
+    background: linear-gradient(
+    to bottom,
+    rgba(0,0,0, 0),
+    rgba(0,0,0, 100)
+  ),url("../../images/jewellery-1175533_1920.jpg");
+    /* background: url("images/jewellery-1175533_1920.jpg") no-repeat left top,
+     linear-gradient(#3b2535, #241b1b); */
+    /* background-image: url("images/jewellery-1175533_1920.jpg"); */
+    height: 400px;
+    width: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 10px;
+    position: relative;
+   
+}
+.bijou-section h1 a{
+   
+    top: 50%;
+    font-size: 3rem;
+    color: white;
+    bottom: 50%;
+    left: 40%;
+    position:absolute;
+    text-decoration: none;
+  
+   
+   
+     
+}
+
+
+.couture-section{
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0, 0),
+        rgba(0,0,0, 100)
+      ),url("../../images/sewing-955333_1920.jpg");
+ 
+    height: 400px;
+    width: 500px;
+    background-size: cover;
+    background-position: center;
+    margin: 10px;
+    position: relative;
+}
+
+.couture-section h1 a{
+    top: 50%;
+    font-size: 3rem;
+    color: white;
+    bottom: 50%;
+    left: 40%;
+    position:absolute;
+    text-decoration: none;
+   
+    
+}
+
+/* sextion description apres images  */
+.section_presentation2{
+    margin: 10px 400px;
+
+}
+
+
+
+
+
+
+/* bijoux section */
+
+.bijou_section{
+    display: flex;
+    font-size: 1.5rem;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px ;
+    margin-bottom: 200px;
+ 
+     
+}
+ 
+
+.bijoux_content{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.bijou_section p {
+    width: 500px;
+    padding: 10px;
+
+}
+.imagee{
+    height: 750px;
+    width: 500px;
+}
+
+.image_bijoux{
+    height: 300px;
+    width: 420px;
+    margin: 10px auto;
+}
+/* couture section */
+
+ 
+
+/* a propos */
+
+.apropos{
+    display: flex;
+    flex-direction: column;
+    margin: 100px 300px;
+    padding: 10px;
+}
+
+ .imag1 {
+     height: 500px;
+     width: 300px;
+     padding: 10px;
+
+}
+
+.apropo_cont{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.apropo_cont p{
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+}
+
+.gigig{
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* text section_tuito code */
+
+.section_tuito{
+    display: flex;
+    margin: 50px 200px;
+    flex-direction: column;
+    
+  
+}
+.tuito_titre{
+    margin: 50px 300px;
+}
+
+.list_tuit{
+     
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    padding: 20px;
+}
+.premier_list{
+    margin: 10px 20px;
+    padding: 10px;
+}
+.douzieme_list{
+    margin: 10px 20px;
+    padding: 10px;
+}
+
+.gallery_image{
+    display: flex;
+    flex-direction: row;
+}
+
+.immmf{
+    height: 300px;
+    padding: 10px;
+    width: 360px;
+}
+
+
+
+ 
+@media all and (max-width: 991px) {
+    hr{
+        display: none;
+    }
+    header{
+        background: transparent;
+    }
+    .toggle{
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+        position: relative;
+        z-index: 20;
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
+        float: right;
+       
+        
+    }
+  
+   .logoTogl-container{
+       width: 100%;
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+       
+   }
+ 
+   .open {
+       
+        visibility: visible;
+        color: black;
+         
+    }
+    .close{
+        visibility: hidden;
+        color: black;
+    }
+
+    .afficher .open{
+        display: none;
+    }
+
+    .afficher .close{
+       
+        visibility: visible;
+    }
+  
+    .menu{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #E4E4E4 ;
+        flex-direction: column;
+        padding: 2rem;
+        justify-content: space-around;
+        transform: translateX(-100%);
+        /* ici ils disparaissent */
+    }
+
+      /*  la si le menu est ouvert */
+      .afficher .menu{
+        /* la le menu reviendra à ca position initial */
+        transform: translateX(0);
+        /* animation */
+        transition: transform 1s;
+    }
+
+    .menu li a {
+        font-size: 2rem;
+        color: black;
+    }
+
+
+    /* titre de la page d'accueil */
+    main h3{
+        
+        margin: 10px;
+        display: flex;
+        font-size: 1;
+        color: sienna;
+         
+    }
+
+    main{
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        height: 100%;
+          
+    }
+
+    /* partie image bijoux et coutures */
+    .section_images{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .section_presentation2 {
+       
+        padding: 0px;
+        margin: 10px 20px;
+    }
+
+ 
+
+    .bijou_section{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .section_tuito{
+        
+        margin: 0px;
+        padding: 0px;
+    }
+    .section_tuito h2{
+        padding: 0px;
+        margin: 0px;
+    }
+    .douzieme_list{
+        margin-top: 30px;
+    }
+
+    .list_tuito{
+        display: flex;
+        flex-direction: column;
+    }
+ 
+    .gallery_image{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .apropos{
+        display: flex;
+        flex-direction: column;
+        margin: 0px;
+        padding: 0px;
+        
+
+    }
+    .apropo_cont{
+        display: flex;
+        flex-direction: column;
+       
+    }
+     
+   
+}
+
+
+/* button about us */
+
+ .buttonn{
+     background-color: #BF584E;
+     color: white;
+ }

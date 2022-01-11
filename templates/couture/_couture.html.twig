@@ -1,0 +1,38 @@
+{% set url = path('coutures_show', {'slug': couture.slug}) %}
+<div class="col-md-4">
+	<div class="card bg-light mb-3">
+		<div class="card-header text-center">
+			Nos céation couture,
+			<strong>créer</strong>
+			/ main
+			<br>
+			{% if couture.commentCs | length > 0 %}
+				{% include "partials/rating.html.twig" with {"rating" : couture.avgRatings } %}
+			{% else %}
+			<small>Pas encore noté</small>
+			{% endif %}
+		</div>
+		<a href="{{ url }}">
+			<img src="{{ couture.coverImage }}" alt="" style="height: 200px; width: 100%; display: block">
+		</a>
+
+		<div class="card-body">
+			<h4 class="card-title">
+				<a href="{{ url }}">
+					{{ couture.title }}
+				</a>
+			</h4>
+			<p class="card-text">
+				{{ couture.introduction }}
+			</p>
+			<a href="{{ url }}" class="btn btn-primary float-right">En savoir plus !</a>
+
+			{# si utilisateur connecter et si l'author de produit alors on affiche le button #}
+			{% if app.user and app.user == couture.author %}
+				<a href="{{ path('coutures_edit', {'slug': couture.slug}) }}" class="btn btn-secondary">Modifier le produit</a>
+			{% endif %}
+
+
+		</div>
+	</div>
+</div>

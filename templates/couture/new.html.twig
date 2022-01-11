@@ -1,0 +1,62 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Création d'un produit Couture
+{% endblock %}
+
+{# on dit ici avec {% form_theme form _self %} a twig que on veut utiliser cette theme 
+qui et ici dans cette page pour notre affichage #}
+{% form_theme form 'couture/_collection.html.twig' %}
+
+{% block body %}
+
+	<div class="container">
+		<h1>Créer un nouveaux produit Couture</h1>
+
+		{{ form_start(form) }}
+		
+		<div class="row">
+			<div class="col-md-4">
+				<div class="alert alert-light">
+					<h2>Informations générales</h2>
+					<hr>
+					{{ form_row(form.title) }}
+					{{ form_row(form.slug) }}
+				</div>
+
+				<div class="alert alert-light">
+					<h2>Détails d'produit</h2>
+					<hr>
+					{{ form_row(form.introduction) }}
+					{{ form_row(form.content) }}
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="alert alert-light">
+					<h2>Images de produit</h2>
+					<hr>
+					{{ form_row(form.coverImage) }}
+					{{ form_row(form.imageCoutures) }}
+				</div>
+			</div>
+		</div>
+	{# {{ form_widget(form) }} #}
+		<div class="alert alert-info clearfix">
+
+			<h2 class="alert-heading">
+				<i class="fas fa-save"></i>
+				Sauvgarder le produit
+			</h2>
+
+			<p>Vous étes sur le point de créer votre produit... !</p>
+			<button type="submit" class="btn btn-primary float-right">
+				<i class="fas fa-check"></i>
+				Créer un produit Couture</button>
+		</div>
+		{{ form_end(form) }}
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	<script src="/js/couture.js"></script>
+{% endblock %}

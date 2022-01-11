@@ -1,0 +1,144 @@
+{% extends "admin/base.html.twig" %}
+
+{% block title %}
+    Modification de produit numéro {{couture.id}}
+{% endblock %}
+
+{% form_theme form _self %}
+
+{% block body %}
+
+<div class="container">
+    <h1 class="my-5">Modification de produit {{couture.title}}</h1>
+  
+    {{ form_start(form) }}
+<div class="row">
+    <div class="col">
+        <div class="card bg-light">
+            <div class="card-header">
+                <h4 class="card-title">Corriger le produit ?</h4>
+            </div>
+
+            <div class="card-body">
+                {{ form_widget(form) }}
+
+                 <button type="submit" class="btn btn-primary mt-3">
+                    <i class="fas fa-check"></i>
+                    Enregistrer les modifications
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="col">
+        <div class="crd bg-light ">
+            <div class="card-header">
+                <h4 class="card-title">Les informations de produit</h4>
+            </div>
+
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{couture.id}}</td>
+                            <td>{{couture.title}}</td> 
+                            <td>
+                                <a href="#" class="btn btn-primary">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card bg-light mt-5">
+        <div class="card-header">
+            <h4 class="card-title">Les Commentaires</h4>
+        </div>
+
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Note</th>
+                        <th>Commentaire</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for commentC in couture.commentCs %}
+                    <tr>
+                        <td>{{commentC.id}}</td>
+                        <td>{{commentC.author.fullName}}</td> 
+                        <td>{{commentC.rating}}</td>
+                        <td>{{commentC.content}}</td>
+                        <td>
+                            <a href="#" class="btn btn-primary">
+                                <i class="fas fa-pen"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+</div>
+
+    {{ form_end(form) }}
+
+</div>
+{% endblock %}
+
+{% block _couture_imageCoutures_widget %}
+   {{ form_widget(form) }} 
+{% endblock %}
+
+
+{% block _couture_imageCoutures_entry_row %}
+	 <div id="block_{{id}}">
+        {{ form_widget(form) }}
+    </div>
+{% endblock %}
+
+{% block _couture_imageCoutures_entry_widget %}
+		<div class="row align-items-center">
+        <div class="col-4">
+            {{ form_row(form.url) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.caption) }}
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-danger" data-action="delete" data-target="#block_{{id}}">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        $(document).ready(function() {
+            // avec un console.log(target) on verifie avec le inspecteur si on affiche le div de la target et son nr
+            $('[data-action="delete"]').on('click', function() {
+                const target = this.dataset.target;
+                // Mainthna que je ai la target je en vie de le supprimer
+                $(target).remove();
+            });
+        });
+    </script>
+
+{% endblock %}

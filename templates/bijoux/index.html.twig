@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos magnifiques Bijoux!
+{% endblock %}
+
+{% block body %}
+	<div class="bijoux--container">
+		<h1 class="my-5">Voici nos magnifiques bijoux!</h1>
+		<div class=" mgnf_bijoux">
+	 
+	 <div class="tri_container">
+
+	 <div class="bijoux_tri">
+		 <h1><a href="bijoux.html">Bijoux</a>  </h1>
+
+		 <ul>
+			 <li><a href="boucles.html">boucles d'oreille </a></li>
+			 <li><a href="bracelets.html">Bracelets</a> </li>
+			 <li><a href="collier.html">Colliers</a> </li>
+			 <li><a href="bague.html">Bagues</a></li>
+		 </ul>
+
+
+	 </div>
+	 <div class="couturs_tri">
+
+		 <h1><a href="coutures.html">Coutures</a></h1>
+
+		 <ul>
+			 <li><a href="sac.html">Sac</a></li>
+			 <li><a href="pochettes.html">Pochettes</a></li>
+			 <li> <a href="serviettes.html">Serviettes</a></li>
+			 <li><a href="portefeuilles.html">Portefeuilles</a> </li>
+		 </ul>
+
+	 </div>
+ </div>
+
+ <div class="row">
+	 {% for bijoux in bijouxs %}
+		 {% include "bijoux/_bijoux.html.twig" %}
+	 {% endfor %}
+ </div>
+</div>
+		
+	</div>
+{% endblock %}

@@ -1,0 +1,171 @@
+ul li {
+    list-style: none;
+}
+.header{
+    /* quand on mis la position absolute la dive ne prend pas 100% la taille de son parent par defaut 
+    c'est pour ca il faut mettre la largeur a 100% */
+    /* position: absolute; */
+    width: 100%;
+    top: 0;
+    left: 0;
+    /* background-color: #E4E4E4; */
+   
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+     
+    
+    
+    
+}
+
+
+
+ 
+hr{ 
+    /* background: #fff  no-repeat scroll center; */
+    background: black;
+    margin-left: 13em;
+    margin-right: 13em;
+    width:50em;
+    height: 2px;
+
+} 
+
+.logoTogl-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo{
+    font-size: 2rem;
+}
+
+ 
+
+
+
+/* le toggle pour le menu */
+ .toggle{
+     display: none;
+      
+
+ }
+
+ .menuu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+      
+   margin:-20px;
+    padding: 0px;
+    
+
+}
+.menuu  .nav-item .dropdown-item:hover{
+    background-color: transparent;
+    width: 100%;
+}
+
+
+.menuu li a {
+    
+    list-style: none;
+    margin: 10px;
+    color: #E30613;
+    font-weight: bold;
+    padding: 10px;
+    
+}
+
+/* small screan */
+
+@media all and (max-width: 991px) {
+    hr{
+        display: none;
+    }
+    .header{
+        background: transparent;
+    }
+    .toggle{
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+        position: relative;
+        z-index: 20;
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
+        float: right;
+       
+        
+    }
+  
+   .logoTogl-container{
+       width: 100%;
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+       
+   }
+ 
+   .open {
+       
+        visibility: visible;
+        color: black;
+         
+    }
+    .close{
+        visibility: hidden;
+        color: black;
+    }
+
+    .afficher .open{
+        display: none;
+    }
+
+    .afficher .close{
+       
+        visibility: visible;
+    }
+  
+    .menuu{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #E4E4E4 ;
+        flex-direction: column;
+        padding: 2rem;
+        justify-content: space-around;
+        transform: translateX(-100%);
+        /* ici ils disparaissent */
+    }
+
+      /*  la si le menu est ouvert */
+      .afficher .menuu{
+        /* la le menu reviendra à ca position initial */
+        transform: translateX(0);
+        /* animation */
+        transition: transform 1s;
+    }
+
+    .menuu li a {
+        font-size: 2rem;
+        color: black;
+    }
+
+     
+   
+}
+
+
+.connexion{
+    background-color: red;
+    margin: 200px 100px;
+}

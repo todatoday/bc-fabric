@@ -1,0 +1,40 @@
+{% set url = path('bijouxs_show', {'slug': bijoux.slug}) %} 
+<div class="col-md-4">
+	<div class="card bg-light mb-3">
+		<div class="card-header text-center">
+			Nos Bijoux,
+			<strong>créer</strong>
+			/ main
+			<br>
+			<a href="{{ url }}">
+			<img src="{{ bijoux.coverImage }}" alt="" style="height: 200px; width: 100%; display: block">
+		</a>
+			{% if bijoux.commentBs | length > 0 %}
+				{% include "partials/rating.html.twig" with {"rating" : bijoux.avgRatings } %}
+				{% else %}
+			<small>Pas encore noté</small>
+			{% endif %}
+		</div>
+	 
+
+		<div class="card-body">
+			<h4 class="card-title">
+				<a href="{{ url }}">
+					{{ bijoux.title }}
+				</a>
+			</h4>
+			<p class="card-text">
+				{{ bijoux.introduction }}
+			</p>
+			<a href="{{ url }}" class="btn btn-primary float-right">En savoir plus !</a>
+
+
+			{# si utilisateur connecter et si l'author de produit alors on affiche le button #}
+			{% if app.user and app.user == bijoux.author %}
+				<a href="{{ path('bijouxs_edit', {'slug': bijoux.slug}) }}" class="btn btn-secondary">Modifier le produit</a>
+			{% endif %}
+
+
+		</div>
+	</div>
+</div>
